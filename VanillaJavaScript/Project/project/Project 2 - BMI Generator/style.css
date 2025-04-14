@@ -1,0 +1,131 @@
+/* Base Styles (Desktop Default) */
+.container {
+    width: 575px;
+    height: 825px;
+    background-color: #797978;
+    padding: 30px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#height,
+#weight {
+    width: 150px;
+    height: 25px;
+    margin-top: 30px;
+    border: 2px solid #212121;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+#weight-guide {
+    margin-left: 75px;
+    margin-top: 25px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#results {
+    font-size: 35px;
+    margin-left: 90px;
+    margin-top: 20px;
+    color: rgb(241, 241, 241);
+    text-align: center;
+}
+
+button {
+    width: 150px;
+    height: 45px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    color: #212121;
+    border: 2px solid #212121;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #212121;
+    color: #fff;
+}
+
+h1 {
+    padding-left: 15px;
+    padding-top: 25px;
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        height: auto; /* Let height adjust based on content */
+        padding: 20px;
+    }
+
+    #height,
+    #weight {
+        width: 100%;
+        height: 35px; /* Increase height for better usability on touch devices */
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    #weight-guide {
+        margin-left: 0;
+        text-align: center; /* Center the guide text for smaller screens */
+        font-size: 16px;
+    }
+
+    #results {
+        font-size: 30px;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    button {
+        width: 100%;
+        height: 50px;
+        font-size: 22px;
+        margin-top: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #height,
+    #weight {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #results {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    button {
+        height: 45px;
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}

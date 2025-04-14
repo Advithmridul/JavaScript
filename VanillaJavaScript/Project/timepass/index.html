@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Money Distribution (monthly)</h1>
+    <div class="button-group">
+        <button onclick="updateDistribution(35000)">Up to $35,000</button>
+        <button onclick="updateDistribution(50000)">Up to $50,000</button>
+        <button onclick="updateDistribution(70000)">Up to $70,000</button>
+        <button onclick="updateDistribution(100000)">Up to $100,000</button>
+        <button onclick="updateDistribution(150000)">Up to $150,000</button>
+        <button onclick="updateDistribution(200000)">Up to $200,000</button>
+    </div>
+    <div id="moneyTableContainer"></div>
+    
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
