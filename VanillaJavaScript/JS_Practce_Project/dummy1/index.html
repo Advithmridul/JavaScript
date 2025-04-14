@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Product Filter</title>
+    
+</head>
+<body>
+
+<div class="container">
+    <h1>Product Filter with Search</h1>
+    <input type="text" id="searchBar" class="search-bar" placeholder="Search by model name or company name...">
+
+    
+    <div class="filter-section">
+        <div>
+            <label for="companyFilter">Company:</label>
+            <select id="companyFilter">
+                <option value="all">All</option>
+                <option value="Apple">Apple</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Nothing">Nothing</option>
+                <option value="Motorola">Motorola</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="priceFilter">Price:</label>
+            <select id="priceFilter">
+                <option value="all">All</option>
+                <option value="below20000">Below 20,000</option>
+                <option value="20000to50000">20,000 - 50,000</option>
+                <option value="above50000">Above 50,000</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="productList">
+        <!-- Products will be displayed here -->
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
