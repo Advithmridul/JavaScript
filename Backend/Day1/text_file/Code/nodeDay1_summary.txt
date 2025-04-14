@@ -1,0 +1,191 @@
+Node.js fs Functions – Sync vs Async
+
+Node provides two versions of most fs functions:
+
+Function (Sync)	Function (Async)	Purpose
+fs.cpSync()	fs.cp()	Copy files or directories
+fs.unlinkSync()	fs.unlink()	Delete a file
+fs.mkdirSync()	fs.mkdir()	Create a directory
+fs.statSync()	fs.stat()	Get file or folder metadata
+🔁 Sync = blocks the thread until operation completes
+🧵 Async = non-blocking, preferred for I/O-heavy apps
+
+📋 1. fs.cpSync(src, dest)
+✅ Copy file or folder synchronously
+
+js
+Copy
+Edit
+const fs = require('fs');
+
+fs.cpSync('./source.txt', './copy.txt');
+🔁 Async version:
+
+js
+Copy
+Edit
+fs.cp('./source.txt', './copy.txt', (err) => {
+  if (err) throw err;
+  console.log('Copied!');
+});
+🗑️ 2. fs.unlinkSync(path)
+✅ Delete a file
+
+js
+Copy
+Edit
+fs.unlinkSync('./copy.txt');
+🔁 Async:
+
+js
+Copy
+Edit
+fs.unlink('./copy.txt', (err) => {
+  if (err) throw err;
+  console.log('File deleted');
+});
+📁 3. fs.mkdirSync(path, options)
+✅ Make directory (optionally recursive)
+
+js
+Copy
+Edit
+fs.mkdirSync('./logs', { recursive: true });
+🔁 Async:
+
+js
+Copy
+Edit
+fs.mkdir('./logs', { recursive: true }, (err) => {
+  if (err) throw err;
+});
+📊 4. fs.statSync(path)
+✅ Get metadata: size, isFile, isDirectory, createdAt, etc.
+
+js
+Copy
+Edit
+const stats = fs.statSync('./hello.txt');
+console.log(stats.isFile(), stats.size);
+🔁 Async:
+
+js
+Copy
+Edit
+fs.stat('./hello.txt', (err, stats) => {
+  if (err) throw err;
+  console.log(stats.isFile(), stats.size);
+});
+🧠 When to Use Sync vs Async
+Use Case	Prefer
+Scripts, CLI tools	✅ Sync
+Servers, APIs, production apps	✅ Async
+Tiny automation tasks	✅ Sync is OK
+Anything performance-heavy	❌ Avoid Sync
+Let me know if you want to build a utility like a CLI file manager using these functions — it’s a fun hands-on project!
+
+
+
+
+
+
+
+
+You said:
+explain 3 and 4 in details
+
+
+ChatGPT said:
+Awesome! Let’s dive deeper into fs.mkdirSync (3) and fs.statSync (4) — two powerful Node.js file system functions that are super handy when building file-related tools 🚀
+
+📁 3. fs.mkdirSync(path[, options])
+✅ Purpose:
+Creates a new directory (folder) synchronously. If the directory already exists, it may throw an error unless recursive: true is used.
+
+🧪 Basic Example:
+js
+Copy
+Edit
+const fs = require('fs');
+
+fs.mkdirSync('myFolder');
+This will create a folder named myFolder in the current directory.
+
+⚠️ Error if folder exists:
+js
+Copy
+Edit
+fs.mkdirSync('myFolder'); // Error: EEXIST: file already exists
+✅ Create nested folders using recursive: true:
+js
+Copy
+Edit
+fs.mkdirSync('parent/child/grandchild', { recursive: true });
+Without recursive, this will fail if parent doesn't exist.
+
+With recursive: true, it creates all intermediate folders if needed.
+
+⚙️ Options:
+js
+Copy
+Edit
+fs.mkdirSync(path, {
+  recursive: true,
+  mode: 0o755 // optional permissions (read/write/execute)
+});
+recursive: creates directories recursively
+
+mode: sets UNIX permissions (0o755 is default — owner can read/write/execute; others can read/execute)
+
+📌 Use Case:
+You're building a log manager, and you want to ensure that the logs/ folder exists before writing log files.
+
+📊 4. fs.statSync(path)
+✅ Purpose:
+Fetches information about a file or directory synchronously.
+
+🧪 Example:
+js
+Copy
+Edit
+const fs = require('fs');
+
+const stats = fs.statSync('./hello.txt');
+
+console.log(stats.isFile());         // true
+console.log(stats.isDirectory());    // false
+console.log(stats.size);             // file size in bytes
+console.log(stats.birthtime);        // creation date
+console.log(stats.mtime);            // last modified date
+🧠 What You Get in stats:
+Property	Description
+isFile()	Is it a file?
+isDirectory()	Is it a folder?
+size	File size in bytes
+birthtime	Created date (platform dependent)
+mtime	Last modified date
+mode	File permission mode (e.g. 33188)
+ino	Inode number (file system metadata)
+📌 Use Case:
+You're writing a CLI tool to analyze disk usage or list files — you use statSync() to get details like file size and last modified time.
+
+🆚 Bonus: lstatSync()
+Same as statSync(), but doesn’t follow symlinks
+
+Useful when dealing with symbolic links
+
+🔁 Recap: mkdirSync vs statSync
+Feature	mkdirSync	statSync
+Creates dirs?	✅ Yes	❌ No
+Reads info?	❌ No	✅ Yes (size, dates, type, etc)
+Recursive?	✅ Yes (recursive: true)	❌ N/A
+Used for?	File/folder creation	File/folder metadata inspection
+Want a mini project that uses both? Like:
+
+Create folder if it doesn't exist
+
+Check files inside it
+
+Print size/date/type info?
+
+Happy to code that for you too!
