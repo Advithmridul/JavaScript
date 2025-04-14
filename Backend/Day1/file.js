@@ -1,4 +1,7 @@
 const fs = require("fs");
+const os = require("os");
+
+// console.log(os.cpus().length)
 
 /* 
 There are two ways for file operation 
