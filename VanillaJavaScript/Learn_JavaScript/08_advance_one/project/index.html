@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Git Card</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Git Card</h1>
+        <div class="card" id="profileCard">
+            <img id="avatar" src="" alt="User Avatar">
+            <h2 id="username"></h2>
+            <h2 id="follower_count"></h2><h2 id="following_count"></h2>
+            <p id="bio"></p>
+        </div>
+    </div>
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(this.responseText);
+            
+            // Update card with data from GitHub
+            document.getElementById('avatar').src = data.avatar_url;
+            document.getElementById('username').textContent = data.login;
+            document.getElementById('follower_count').textContent = data.followers;
+            // document.getElementById('following_count').textContent = data.following;
+            document.getElementById('bio').textContent = data.bio || 'No bio available';
+        }
+    };
+    xhr.send();
+</script>
+
+</html>

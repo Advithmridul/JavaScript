@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+
+
+</body>
+<script>
+    const myName = () => {
+    console.log("Mridul");
+}
+const changeText = () => {
+    document.querySelector('h1')
+    .innerHTML = "Best Js Code";
+} 
+const changeMe = setTimeout(changeText, 2000);  // changeText is a handelar so we are giveing reference not executing .
+document.querySelector('#stop').addEventListener('click', (e) => {
+    clearTimeout(changeMe);    
+    console.log("Stoppp")
+});
+</script>
+</html>

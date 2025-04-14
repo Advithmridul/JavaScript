@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Element</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+
+</body>
+
+<script>
+    const divEl = document.createElement('div'); // Create a div element
+    console.log(divEl); // Log the element to the console
+    divEl.className = 'main'; // Set class name
+    divEl.id = 'myID'; // Set id
+    divEl.setAttribute('title', 'generated_title'); // Set title attribute
+    divEl.setAttribute('type', 'test'); // Set custom attribute 'type'
+    divEl.style.color = '#fff'; // Set text color
+    divEl.style.padding = '10px'; // Set padding
+    divEl.style.margin = '12px'; // Set margin
+
+    // Create a text node
+    const addText = document.createTextNode("Chai aur Code");
+
+    // Append the text node to the div
+    divEl.appendChild(addText);
+
+    // Append the div element to the body of the document
+    document.body.appendChild(divEl);
+</script>
+
+</html>

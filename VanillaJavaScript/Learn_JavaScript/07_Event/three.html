@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let intervalId; // Declare intervalId in a higher scope
+
+    const sayDate = (strName) => {
+        console.log(strName, Date.now());
+    };
+
+    let changeText ;
+
+    document.querySelector('#start').addEventListener('click', () => {
+        if (!intervalId) { // Only start a new interval if one is not already running
+            intervalId = setInterval(sayDate, 1000, "Hi yo whatsApp");
+            changeText = document.querySelector('h1').innerHTML = "Yo JS thara Bhai JS";
+        }
+    });
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        if (intervalId) { // Check if intervalId is set before clearing
+            console.log("Stopped!");
+            clearInterval(intervalId);
+            changeText = document.querySelector('h1').innerHTML = "Naaa...haaa... 😢😭";
+            intervalId = null; // Reset intervalId to allow restarting
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra</title>
+</head>
+
+<body>
+    <h1>Notes for DOM</h1>
+
+    <!-- h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1> -->
+    <p class="Basic">
+        <span>
+            <p>console.log(window)</p>
+        </span> <!--  // It will show full window-->
+
+
+        <span>
+            <p>console.log(window.document)</p>
+        </span> <!--  // It will show Html file.-->
+
+
+        <span>
+            <p>console.dir(document)</p>
+        </span> <!--  // it will show full window.-->
+
+
+        <span>
+            <p>console.log(window)</p>
+        </span>
+
+
+        <span>
+            <p><img src="" alt="" srcset=""></p>
+        </span>
+    </p>
+
+    <!-- <h2>DOM Tree</h2>
+    <p>HTML
+        ├── HEAD
+        │   ├── META (charset="UTF-8")
+        │   ├── META (name="viewport")
+        │   └── TITLE ("Extra")
+        └── BODY
+            ├── H1 ("Extra")
+            └── P
+                ├── SPAN
+                │   └── P ("console.log(window)")
+                ├── SPAN
+                │   └── P ("console.log(window.document)")
+                ├── SPAN
+                │   └── P ("console.dir(document)")
+                ├── SPAN
+                │   └── P ("console.log(window)")
+                └── SPAN
+                    └── P
+                        └── IMG (src="", alt="", srcset="")
+       </p> -->
+
+    <p>
+        console.log(document.baseURI);
+        console.log(document.links)
+        console.log(document.links[2])
+    </p>
+    <p class="getElementByIdFunction">
+        document.getElementById('firstHeading');
+    <h1 id=​"firstHeading" class=​"firstHeading mw-first-heading">​::before​<span class=​"mw-page-title-main">​Brendan
+            Eich​</span>​</h1>​
+
+    const setHed = document.getElementById('firstHeading').innerHTML = '<h1>Mridul Advith</h1> '
+    </p>
+
+
+
+    <p class="getAttributeFunction">
+        document.getElementById('title').getAttribute('id'); <!-- // id in return -->
+        document.getElementById('title').getAttribute('class'); <!--  // class in return  -->
+    </p>
+
+    <p class="setAttributeFunction">
+        document.getElementById('title').setAttribute('class', 'heroClass');
+        document.getElementById('title').setAttribute('heroClass', 'class heading');
+        <!-- // setting up two value to the -->
+        class
+    </p>
+
+    <p class="styling">
+        const title = document.getElementById('title');
+        title.style.borderRadius = '35px';
+
+        title.style.backgroundColor = "green";
+    </p>
+
+    <p class="innerText textContent innerHTML">
+        const title = document.getElementById('title');
+
+
+        title.textContent <!--  // 'DOM learning on Chai aur code test text' -->
+
+        title.innerHTML <!-- // 'DOM learning on Chai aur code <span style="display: none;">test text</span>' -->
+
+        title.innerText <!--  // 'DOM learning on Chai aur code' -->
+
+
+        <!-- As we have noticed "innerText" will dispaly only non hidden code.
+            but in "textContent" we can access hidden code like (test text) to.
+            And "innerHTML" will show everything in the code even tag to.
+        -->
+
+    </p>
+
+    <p class="querySelector">
+        document.querySelector('h2'); <!--  <h2>​Lorem ipsum dolor sit.​</h2>​ -->
+
+
+        document.querySelector('#title');
+        <!-- <h1 id=​"title" class=​"heading" style=​"color:​ red;​">​"DOM learning on Chai aur code "<span style=​"display:​ none;​">​test text​</span>​</h1>​ -->
+
+        document.querySelector('.heading');
+        <!-- <h1 id=​"title" class=​"heading" style=​"color:​ red;​">​…​</h1>​"DOM learning on Chai aur code "<span style=​"display:​ none;​">​test text​</span>​</h1>​ -->
+
+        document.querySelector('input');
+        <!-- <input type=​"password" name id>​ -->
+
+        document.querySelector('input[type = "password"]');
+        <!-- <input type=​"password" name id>​ -->
+
+        document.querySelector('p:first-child');
+        <!-- null -->
+
+    <div>
+        <p>
+            document.querySelector('ul');
+            <!-- <ul>​<li class=​"list-item">​…​</li>​<li class=​"list-item">​…​</li>​<li class=​"list-item">​…​</li>​<li class=​"list-item">​…​</li>​</ul>​ -->
+
+            const myUl = document.querySelector('ul'); <!-- undefine-->
+
+            myUl.querySelector('li');
+            <!-- <li class=​"list-item">​…​</li>​ -->
+
+            const turnGreen = myUl.querySelector('li'); <!-- undefine-->
+
+            turnGreen.style.color = 'green';
+
+            turnGreen.style.padding = '10px';
+
+            turnGreen.innerText; <!-- one -->
+
+            turnGreen.innerText = 'five'; <!-- five -->
+        </p>
+    </div>
+    </p>
+
+    <p class="querySelectorAll">
+    <div>
+        document.querySelectorAll('li');
+        <!-- NodeList(4) [li.list-item, li.list-item, li.list-item, li.list-item] -->
+    </div>
+    <div>
+        const tempLiList = document.querySelectorAll('li'); <!-- undefine -->
+
+        <!-- Bacause it is not array, so we can use like array like down bellow -->
+        tempLiList[0].style.color = 'pink';
+
+        const myH1 = document.querySelectorAll('h1');
+        myH1[0].style.backgroundColor = 'yellow';
+    </div>
+
+    <div>
+        const tempLiList = document.querySelectorAll('li'); <!-- undefine -->
+
+        tempLiList.forEach( (itemList) => {
+            itemList.style.backgroundColor = "yellow"
+        } )
+
+        tempLiList.forEach( (itemList) => {
+            itemList.style.Color = "blue"
+        } )
+    </div>
+    </p>
+
+    <p class="getElementByClassName">
+        document.getElementsByClassName('list-item');
+        <!-- HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: HTMLCollectionitem: ƒ item()length: (...)namedItem: ƒ namedItem()constructor: ƒ HTMLCollection()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "HTMLCollection"get length: ƒ length()[[Prototype]]: Object -->
+
+        const tempClassList = document.getElementsByClassName('list-item');
+        <!-- undefined -->
+
+        Array.from(tempClassList)
+        <!-- (4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: Array(0)at: ƒ at()concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()findLast: ƒ findLast()findLastIndex: ƒ findLastIndex()flat: ƒ flat()flatMap: ƒ flatMap()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toReversed: ƒ toReversed()toSorted: ƒ toSorted()toSpliced: ƒ toSpliced()toString: ƒ toString()unshift: ƒ unshift()values: ƒ values()with: ƒ with()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}[[Prototype]]: Object -->
+
+        const convetedArray = Array.from(tempClassList);
+        <!-- undefined -->
+
+        convetedArray.forEach( (item) => {
+            item.style.color = "grey"
+        });
+    </p>
+</body>
+
+</html>
