@@ -1,0 +1,12 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.example.myapp
+mac:
+  target: dmg
+win:
+  target: nsis
+linux:
+  target: AppImage
+files: []
+electronVersion: 25.9.8
